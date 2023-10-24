@@ -5,20 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/profesor"
     android:padding="16dp"
     tools:context=".ListaTrabajadoresActivity">
 
     <EditText
         android:id="@+id/editTextCodigoTutor"
         android:layout_width="match_parent"
+        android:textStyle="bold"
+        android:textColor="#000000"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:hint="Ingrese el código del tutor" />
 
     <Button
         android:id="@+id/btnDescargarLista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#4B65F1"
+        android:layout_gravity="center"
+        android:backgroundTint="#081455"
         android:text="Descargar Lista de Trabajadores" />
 
 </LinearLayout>
