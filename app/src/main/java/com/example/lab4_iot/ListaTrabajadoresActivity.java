@@ -39,7 +39,7 @@ public class ListaTrabajadoresActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String codigoTutor = editTextCodigoTutor.getText().toString();
-                String url = "http://192.168.1.40:3000/trabajadores/" + codigoTutor;
+                String url = "http://localhost:3000/trabajadores/" + codigoTutor;
 
                 // Realizar la solicitud HTTP en un AsyncTask
                 new DescargarListaTask().execute(url);

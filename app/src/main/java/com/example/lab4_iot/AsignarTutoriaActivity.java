@@ -48,7 +48,7 @@ public class AsignarTutoriaActivity extends AppCompatActivity {
         btnAsignar = findViewById(R.id.btnAsignar);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.40:3000")
+                .baseUrl("http://localhost:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

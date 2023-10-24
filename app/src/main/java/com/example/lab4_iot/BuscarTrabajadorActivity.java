@@ -40,7 +40,7 @@ public class BuscarTrabajadorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 codigoEmpleado = editTextCodigoEmpleado.getText().toString();
-                String url = "http://192.168.1.40:3000/empleados/" + codigoEmpleado;
+                String url = "http://localhost:3000/empleados/" + codigoEmpleado;
 
                 // Realizar la solicitud HTTP en un AsyncTask
                 new DescargarListaTask().execute(url);
