@@ -87,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (ActivityCompat.checkSelfPermission(this, POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
             notificationManager.notify(1, notification);
+
+            // Cambiar automáticamente de vista
+            startActivity(intent);
         }
 
     }
@@ -114,6 +117,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (ActivityCompat.checkSelfPermission(this, POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
             notificationManager.notify(1, notification);
+
+            // Cambiar automáticamente de vista
+            startActivity(intent);
         }
 
     }

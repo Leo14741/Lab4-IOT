@@ -44,7 +44,7 @@ public class ColocarIDdelTrabajadorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 codigoTrabajador = editTextCodigoTrabajador.getText().toString();
-                String url = "http://localhost:3000/meeting_date/" + codigoTrabajador;
+                String url = "http://192.168.1.40:3000/meeting_date/" + codigoTrabajador;
 
                 // Realizar la solicitud HTTP en un AsyncTask
                 new ObtenerMeetingDateTask().execute(url);
