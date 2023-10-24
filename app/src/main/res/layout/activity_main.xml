@@ -4,44 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/profesor"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/ola"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
         android:fontFamily="@font/aladin"
         android:gravity="center"
         android:text="Programa de Tutorías"
+        android:textColor="#000000"
         android:textSize="58sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/tutor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
-        android:backgroundTint="#27CCBC"
+        android:layout_width="191dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="260dp"
+        android:backgroundTint="#240A60"
         android:text="Tutor"
-        android:textSize="34sp"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ola" />
 
     <Button
         android:id="@+id/trabajador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#20B626"
+        android:layout_width="191dp"
+        android:layout_height="56dp"
+        android:backgroundTint="#0B3A0D"
         android:text="Trabajador"
-        android:textSize="34sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tutor"
-        app:layout_constraintVertical_bias="0.222" />
+        app:layout_constraintVertical_bias="0.363" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
