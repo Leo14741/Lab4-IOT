@@ -22,24 +22,25 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ListaTrabajadoresActivity extends AppCompatActivity {
+public class BuscarTrabajadorActivity extends AppCompatActivity {
 
-    private EditText editTextCodigoTutor;
-    private Button btnDescargarLista;
+    private EditText editTextCodigoEmpleado;
+    private Button btnBuscar;
+    private String codigoEmpleado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_trabajadores);
+        setContentView(R.layout.activity_buscar_trabajador);
 
-        editTextCodigoTutor = findViewById(R.id.editTextCodigoTutor);
-        btnDescargarLista = findViewById(R.id.btnDescargarLista);
+        editTextCodigoEmpleado = findViewById(R.id.editTextCodigoEmpleado);
+        btnBuscar = findViewById(R.id.btnBuscar);
 
-        btnDescargarLista.setOnClickListener(new View.OnClickListener() {
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String codigoTutor = editTextCodigoTutor.getText().toString();
-                String url = "http://192.168.1.40:3000/trabajadores/" + codigoTutor;
+                codigoEmpleado = editTextCodigoEmpleado.getText().toString();
+                String url = "http://192.168.1.40:3000/empleados/" + codigoEmpleado;
 
                 // Realizar la solicitud HTTP en un AsyncTask
                 new DescargarListaTask().execute(url);
@@ -57,7 +58,7 @@ public class ListaTrabajadoresActivity extends AppCompatActivity {
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
                 InputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
-                FileOutputStream outputStream = openFileOutput("lista_trabajadores.txt", MODE_PRIVATE);
+                FileOutputStream outputStream = openFileOutput("informacionDe" + codigoEmpleado + ".txt", MODE_PRIVATE);
 
                 byte[] buffer = new byte[1024];
                 int bytesRead;
@@ -67,14 +68,13 @@ public class ListaTrabajadoresActivity extends AppCompatActivity {
 
                 inputStream.close();
                 outputStream.close();
-
                 urlConnection.disconnect();
 
-                result = "Lista descargada y guardada correctamente";
+                result = "Archivo descargado y guardado correctamente";
 
             } catch (Exception e) {
                 e.printStackTrace();
-                result = "Error al descargar o guardar la lista";
+                result = "Error al descargar o guardar el archivo";
             }
             return result;
         }
@@ -90,4 +90,3 @@ public class ListaTrabajadoresActivity extends AppCompatActivity {
         }
     }
 }
-

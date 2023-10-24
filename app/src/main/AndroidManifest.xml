@@ -23,6 +23,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".AsignarTutoriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BuscarTrabajadorActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListaTrabajadoresActivity"
             android:exported="false" />
         <activity
