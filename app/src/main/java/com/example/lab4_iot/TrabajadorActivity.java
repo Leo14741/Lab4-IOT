@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 public class TrabajadorActivity extends AppCompatActivity {
-
     private Button descargarHorarios;
     private Button buscarFeedback;
+    boolean ocultarFeedback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,12 @@ public class TrabajadorActivity extends AppCompatActivity {
         descargarHorarios = findViewById(R.id.descargarHorarios);
         buscarFeedback = findViewById(R.id.buscarFeedback);
 
+        // Mover la inicialización de ocultarFeedback aquí
+        ocultarFeedback = getIntent().getBooleanExtra("ocultarFeedback", false);
+
+        if (ocultarFeedback) {
+            buscarFeedback.setVisibility(View.GONE);
+        }
 
         descargarHorarios.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,11 +34,6 @@ public class TrabajadorActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
-
-
     }
+
 }

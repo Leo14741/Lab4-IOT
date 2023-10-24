@@ -7,6 +7,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -43,7 +44,7 @@ public class ColocarIDdelTrabajadorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 codigoTrabajador = editTextCodigoTrabajador.getText().toString();
-                String url = "http://192.168.1.40:3000/empleados/" + codigoTrabajador;
+                String url = "http://localhost:3000/meeting_date/" + codigoTrabajador;
 
                 // Realizar la solicitud HTTP en un AsyncTask
                 new ObtenerMeetingDateTask().execute(url);
@@ -85,7 +86,6 @@ public class ColocarIDdelTrabajadorActivity extends AppCompatActivity {
             return result;
         }
 
-        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected void onPostExecute(String message) {
             super.onPostExecute(message);
@@ -93,10 +93,23 @@ public class ColocarIDdelTrabajadorActivity extends AppCompatActivity {
             // Mostrar mensaje al usuario (por ejemplo, mediante Toast)
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 
-            // Crear una notificación de alta importancia
-            createNotification();
+            // Verifica si meetingDate no está vacío o nulo
+            if (meetingDate != null && !meetingDate.isEmpty()) {
+                // El trabajador tuvo una tutoría, inicia TrabajadorActivity con los botones visibles
+                Intent intent = new Intent(ColocarIDdelTrabajadorActivity.this, TrabajadorActivity.class);
+                intent.putExtra("meetingDate", meetingDate);
 
-            // Utiliza la variable meetingDate como desees, ahora contiene el meeting_date obtenido
+                // Crear y mostrar la notificación
+                createNotification();
+
+                startActivity(intent);
+            } else {
+                // El trabajador no tuvo una tutoría, inicia TrabajadorActivity con el botón de feedback oculto
+                Intent intent = new Intent(ColocarIDdelTrabajadorActivity.this, TrabajadorActivity.class);
+                intent.putExtra("meetingDate", ""); // Puedes pasar meetingDate como cadena vacía
+                intent.putExtra("ocultarFeedback", true); // Indica que el botón de feedback debe ocultarse
+                startActivity(intent);
+            }
         }
     }
 
