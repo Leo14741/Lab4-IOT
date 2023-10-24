@@ -104,6 +104,48 @@ function obtenerInfoEmpleado(id) {
     });
 }
 
+
+
+app.get("/meeting_date/:employee_id", async (req, res) => {
+  const employeeId = req.params.employee_id;
+  try {
+    const meetingDate = await obtenerMeetingDatePorEmployeeId(employeeId);
+
+    if (!meetingDate) {
+      return res.status(404).json({
+        error:
+          "No se encontró una fecha de reunión para el empleado especificado.",
+      });
+    }
+
+    res.json({ meeting_date: meetingDate });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+});
+
+// Función para obtener la fecha de reunión por employee_id
+function obtenerMeetingDatePorEmployeeId(employeeId) {
+  return new Promise((resolve, reject) => {
+    const sql = `SELECT meeting_date FROM hr_v2.employees WHERE employee_id = ?`;
+    connection.query(sql, [employeeId], function (error, results, fields) {
+      if (error) reject(error);
+      if (results.length > 0) {
+        resolve(results[0].meeting_date);
+      } else {
+        resolve(null);
+      }
+    });
+  });
+}
+
+
+
+
+
+
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
