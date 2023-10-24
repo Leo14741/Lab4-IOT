@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/profesor"
+    android:background="@drawable/primero"
     tools:context=".TutorActivity">
 
     <Button
         android:id="@+id/listaTrabajadores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="164dp"
         android:backgroundTint="#081455"
         android:text="Lista de Trabajadores"
         android:textSize="24sp"
@@ -23,11 +23,12 @@
         android:id="@+id/buscarTrabajador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="76dp"
         android:backgroundTint="#081455"
         android:text="Buscar Trabajador"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listaTrabajadores" />
 
@@ -40,7 +41,8 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buscarTrabajador"
-        app:layout_constraintVertical_bias="0.349" />
+        app:layout_constraintVertical_bias="0.218" />
 </androidx.constraintlayout.widget.ConstraintLayout>
