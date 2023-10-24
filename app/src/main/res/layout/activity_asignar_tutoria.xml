@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@drawable/profesor"
     tools:context=".AsignarTutoriaActivity">
 
     <EditText
@@ -12,12 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Código del Tutor"
+        android:textStyle="bold"
+        android:textColor="#000000"
         android:inputType="number" />
 
     <EditText
         android:id="@+id/editTextIdEmpleado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="#000000"
         android:hint="ID del Empleado"
         android:inputType="number" />
 
@@ -25,7 +30,8 @@
         android:id="@+id/btnAsignar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#4B65F1"
+        android:backgroundTint="#240A60"
+        android:layout_gravity="center"
         android:text="Asignar Tutoría" />
 
 </LinearLayout>
