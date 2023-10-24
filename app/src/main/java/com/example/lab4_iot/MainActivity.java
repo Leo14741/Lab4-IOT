@@ -36,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
             notificarImportanceDefault();
         });
 
+        binding.trabajador.setOnClickListener(view -> {
+            notificarImportanceDefault2();
+        });
+
+
     }
 
     public void crearCanalesNotificacion() {
@@ -85,4 +90,38 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
+    public void notificarImportanceDefault2() {
+
+        //Crear notificación
+        Intent intent = new Intent(this, ColocarIDdelTrabajadorActivity.class);
+        intent.putExtra("pid", 4616);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, canal1)
+                .setSmallIcon(R.drawable.baseline_radio_24)
+                .setContentTitle("Aviso")
+                .setContentText("Esta entrando en modo Empleado")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+        Notification notification = builder.build();
+
+        //Lanzar notificación
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+        if (ActivityCompat.checkSelfPermission(this, POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+            notificationManager.notify(1, notification);
+        }
+
+    }
+
+
+
+
+
+
+
 }
