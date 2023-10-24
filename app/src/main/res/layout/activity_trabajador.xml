@@ -7,11 +7,12 @@
     tools:context=".TrabajadorActivity">
 
 
+
     <Button
         android:id="@+id/descargarHorarios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="268dp"
         android:backgroundTint="#081455"
         android:text="Descargar Horarios"
         android:textSize="24sp"
@@ -20,16 +21,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buscarTrabajador"
+        android:id="@+id/buscarFeedback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginBottom="252dp"
         android:backgroundTint="#081455"
         android:text="Boton de feedback"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descargarHorarios" />
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

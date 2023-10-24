@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     public void notificarImportanceDefault2() {
 
         //Crear notificación
-        Intent intent = new Intent(this, TrabajadorActivity.class);
+        Intent intent = new Intent(this, ColocarIDdelTrabajadorActivity.class);
         intent.putExtra("pid", 4616);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
