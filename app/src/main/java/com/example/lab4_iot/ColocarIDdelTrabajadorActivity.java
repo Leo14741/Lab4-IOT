@@ -1,8 +1,14 @@
 package com.example.lab4_iot;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +29,6 @@ public class ColocarIDdelTrabajadorActivity extends AppCompatActivity {
     private EditText editTextCodigoTrabajador;
     private Button btnBuscarTrabajador;
     private String codigoTrabajador;
-
     private String meetingDate;
 
     @Override
@@ -34,7 +39,6 @@ public class ColocarIDdelTrabajadorActivity extends AppCompatActivity {
         editTextCodigoTrabajador = findViewById(R.id.editTextCodigoTrabajador);
         btnBuscarTrabajador = findViewById(R.id.btnBuscarTrabajador);
 
-
         btnBuscarTrabajador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,13 +47,9 @@ public class ColocarIDdelTrabajadorActivity extends AppCompatActivity {
 
                 // Realizar la solicitud HTTP en un AsyncTask
                 new ObtenerMeetingDateTask().execute(url);
-
             }
         });
-
-
     }
-
 
     private class ObtenerMeetingDateTask extends AsyncTask<String, Void, String> {
 
@@ -85,6 +85,7 @@ public class ColocarIDdelTrabajadorActivity extends AppCompatActivity {
             return result;
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected void onPostExecute(String message) {
             super.onPostExecute(message);
@@ -92,7 +93,35 @@ public class ColocarIDdelTrabajadorActivity extends AppCompatActivity {
             // Mostrar mensaje al usuario (por ejemplo, mediante Toast)
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 
+            // Crear una notificación de alta importancia
+            createNotification();
+
             // Utiliza la variable meetingDate como desees, ahora contiene el meeting_date obtenido
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void createNotification() {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        String channelId = "my_channel_id";
+        String channelName = "My Channel";
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+        // Construir la notificación
+        Notification notification = new Notification.Builder(this, channelId)
+                .setSmallIcon(R.drawable.baseline_radio_24)
+                .setContentTitle("Cita programada")
+                .setContentText("La fecha de su cita es " + meetingDate)
+                .setPriority(Notification.PRIORITY_HIGH)
+                .setCategory(Notification.CATEGORY_MESSAGE)
+                .build();
+
+        // Mostrar la notificación
+        notificationManager.notify(1, notification);
     }
 }
